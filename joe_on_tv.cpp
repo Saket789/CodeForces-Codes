@@ -16,12 +16,5 @@ int main(){
     }
 
     printf("%.12f",a) ; 
-
-
-
-
-
-    // a = (double)(n-1.0)/n ;
-    // cout << b+a << endl ;  
-    // cout << setprecision(13) << b+a << " ";
+    
 }
