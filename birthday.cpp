@@ -19,9 +19,12 @@ int main(){
         ll arr[n] ;
         loop(0,n,i) cin >> arr[i] ;
 
-        ll diff, mindiff=1000000000, d1=0, num, maxx=0 , d2 = 1000000000 ,d3;
+        ll diff, mindiff=1000000000, d1=0, num, maxx=0 , d2 = 1000000000 ,d3, min = INT_MAX;
 
         loop(0,n,i) if(maxx < arr[i]) maxx = arr[i] ;
+        loop(0,n,i){
+               if(min > arr[i] && arr[i] > -1) min = arr[i] ;
+        }
         // loop(0,n,i){
         //     if(i == 0 && arr[i] == -1){
         //         if(arr[i+1] > -1)
@@ -37,11 +40,10 @@ int main(){
 
         // cout << d2 << " <---d2          ";
 
-        ll start=1, end=maxx, mid=0 , ans=0, ans1= 0;
+        ll start=min, end=maxx, mid=0 , ans=0, ans1= 0;
 
         while(start <= end){
             mid = (start+end)/2 ;
-            if(start == end) break ;
             // cout << " mid-->" << mid << " " ;
             d1=0;
             loop(1,n,i){
@@ -63,13 +65,14 @@ int main(){
             // if(mindiff > d1) mindiff = d1 ;
             if(d2 >= d1) start= mid+1 ;
             else end = mid ;
-            if(d2 > d1){
+            if(d2 >= d1){
                 ans = d1 ;
                 d2 = d1 ;
                 ans1 = mid ;
                 // cout << d2 << " * " ;
                 // break ;
             }
+            if(start == end) break ;
         }
         cout <<  ans << " "<< ans1 <<  endl ;
 
